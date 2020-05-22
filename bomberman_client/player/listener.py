@@ -30,5 +30,3 @@ class Listener(Thread):
             if message == "end":
                 break
         self.socket.close()
-
-
