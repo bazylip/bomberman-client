@@ -22,7 +22,7 @@ class Sender(Thread):
     def run(self):
         while True:
             message = self.queue.get()
-            self.send_to_server(message)
-            if message == "end":
+            if message == "end client":
                 break
+            self.send_to_server(message)
         self.socket.close()

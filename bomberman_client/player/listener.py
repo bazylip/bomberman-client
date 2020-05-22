@@ -26,7 +26,9 @@ class Listener(Thread):
     def run(self):
         while True:
             message = self.receive_message()
+            print(f"Received message: {message}")
             self.queue.put(message)
-            if message == "end":
+            if message == "end client":
+                print(f"Disconnecting...")
                 break
         self.socket.close()
