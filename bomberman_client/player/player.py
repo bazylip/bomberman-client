@@ -1,10 +1,11 @@
 import json
+import time
 from queue import Queue
 from bomberman_client.player.communicator import Communicator
 
 
 class Player:
-    def __init__(self, port):
+    def __init__(self, port=15000):
         self.sending_queue = Queue()
         self.listening_queue = Queue()
         self.communicator = Communicator(player_sending_queue=self.sending_queue,
@@ -42,7 +43,7 @@ class Player:
             self.y = y
 
 if __name__ == "__main__":
-    player1 = Player(port=15000)
-    player2 = Player(port=15001)
+    player1 = Player()
+    player2 = Player()
     player1.update_player_info()
     print(player1.get_player_info())
