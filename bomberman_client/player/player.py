@@ -3,7 +3,6 @@ import time
 from queue import Queue
 from bomberman_client.player.communicator import Communicator
 
-
 class Player:
     def __init__(self, port=15000):
         self.sending_queue = Queue()
@@ -25,6 +24,7 @@ class Player:
         self.hp = dict_info["hp"]
 
     def get_player_info_from_server(self):
+        message = None
         if self.listening_queue:
             message = self.listening_queue.get()
             print(f"New player info: {message}")
@@ -43,7 +43,6 @@ class Player:
             self.y = y
 
 if __name__ == "__main__":
-    player1 = Player()
-    player2 = Player()
-    player1.update_player_info()
-    print(player1.get_player_info())
+    player = Player()
+    player.update_player_info()
+    print(player.get_player_info())
