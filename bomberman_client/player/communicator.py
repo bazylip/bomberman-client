@@ -48,8 +48,8 @@ class Communicator(Thread):
             s.bind((address, self.port))
             s.listen()
             server, addr = s.accept()
-            print(f"New connection from server: {addr}")
             s.close()
+            print(f"New connection from server: {addr}")
             return server, addr
 
         def create_sending_socket(address):
