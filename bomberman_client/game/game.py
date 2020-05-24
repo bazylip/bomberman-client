@@ -14,6 +14,7 @@ class Game(GameMechanics, GameInterface):
 
     def game_loop(self):
         print("Ready")
+        self.player.get_initial_info()
         while True:
             info = self.player.get_info_from_server()
             if info is not None:
@@ -28,8 +29,9 @@ class Game(GameMechanics, GameInterface):
             action = self.get_user_action()
             if action is not None:
                 print(f"Action: {action}")
-                self.process_user_action()
-            self.player.send_player_info_to_server()
+                self.player = self.process_user_action(self.player, action)
+                print(f"New player info: {self.player.get_player_info()}")
+                self.player.send_action_to_server(action)
 
     def check_win_or_lose(self, info):
         return False
