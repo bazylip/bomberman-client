@@ -5,13 +5,13 @@ from threading import Thread
 
 
 class KeyHandler(Thread):
-    def __init__(self, key_queue, end_queue):
+    def __init__(self, key_queue, communication_queue):
         super().__init__()
         self.key_queue = key_queue
-        self.end_queue = end_queue
+        self.communication_queue = communication_queue
 
     def check_key_pressed(self):
-        keys = ["up", "down", "right", "left", "b"]
+        keys = ["w", "s", "a", "d", "q", "up", "down", "right", "left", "b"]
         for key in keys:
             if keyboard.is_pressed(key):
                 return key
@@ -20,11 +20,10 @@ class KeyHandler(Thread):
     def run(self):
         key_down = False
         while True:
-            if not self.end_queue.empty():
-                message = self.end_queue.get()
+            if not self.communication_queue.empty():
+                message = self.communication_queue.get()
                 if message == "end":
                     break
-
             key = self.check_key_pressed()
             if key is not None:
                 if not key_down:

@@ -1,7 +1,10 @@
+import time
+
 from bomberman_client.game.game_mechanics import GameMechanics
 from bomberman_client.game.event_handler import EventHandler
 from bomberman_client.gui.game_interface import GameInterface
 from bomberman_client.player.player import Player
+
 
 class Game(GameMechanics, GameInterface):
     def __init__(self):
@@ -15,6 +18,7 @@ class Game(GameMechanics, GameInterface):
     def game_loop(self):
         print("Ready")
         self.player.get_initial_info()
+        self.set_keys(self.player.id)
         while True:
             info = self.player.get_info_from_server()
             if info is not None:
@@ -28,10 +32,8 @@ class Game(GameMechanics, GameInterface):
             self.render()
             action = self.get_user_action()
             if action is not None:
-                print(f"Action: {action}")
-                self.player = self.process_user_action(self.player, action)
-                print(f"New player info: {self.player.get_player_info()}")
                 self.player.send_action_to_server(action)
+            #time.sleep(1)
 
     def check_win_or_lose(self, info):
         return False
