@@ -1,6 +1,6 @@
 from threading import Thread
 
-MSGLEN = 200
+MSGLEN = 500
 
 
 class Sender(Thread):

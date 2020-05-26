@@ -32,10 +32,11 @@ class Game(GameMechanics, GameInterface):
                     self.render_end_screen()
                     break
                 self.player.update_player_info(info)
-            self.render(info)
+            self.render(info, self.player.id)
             action = self.get_user_action()
             if action is not None:
                 self.player.send_action_to_server(action)
+            time.sleep(0.01)
 
     def check_win_or_lose(self, info):
         return False

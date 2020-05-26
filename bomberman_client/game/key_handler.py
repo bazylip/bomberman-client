@@ -28,6 +28,14 @@ class KeyHandler(Thread):
             if key is not None:
                 if not key_down:
                     key_down = True
+                    if key == "left":
+                        key = "right"
+                    elif key == "right":
+                        key = "left"
+                    elif key == "a":
+                        key = "d"
+                    elif key == "d":
+                        key = "a"
                     self.key_queue.put(key)
             else:
                 key_down = False
