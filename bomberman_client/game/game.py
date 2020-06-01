@@ -34,6 +34,7 @@ class Game(GameMechanics, GameInterface):
                 self.player.update_player_info(info)
             self.render(info, self.player.id)
             action = self.get_user_action()
+            #print(f"Action: {action}")
             if action is not None:
                 self.player.send_action_to_server(action)
             time.sleep(0.01)
