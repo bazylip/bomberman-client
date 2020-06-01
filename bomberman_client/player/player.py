@@ -33,7 +33,6 @@ class Player:
         message = None
         if not self.listening_queue.empty():
             message = self.listening_queue.get()
-        print(f"Received message: {message}")
         return message
 
     def send_action_to_server(self, action):
