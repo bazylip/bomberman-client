@@ -29,7 +29,8 @@ class Game(GameMechanics, GameInterface):
                     self.stop_event_handler()
                     break
                 if self.check_win_or_lose(info):
-                    self.render_end_screen()
+                    self.render_end_screen(id_player_won=info[-1])
+                    time.sleep(100)
                     break
                 self.player.update_player_info(info)
             self.render(info, self.player.id)
@@ -40,7 +41,7 @@ class Game(GameMechanics, GameInterface):
             time.sleep(0.01)
 
     def check_win_or_lose(self, info):
-        return False
+        return "game over" in info
 
     def server_disconnected(self, info):
         if info == "end client":
