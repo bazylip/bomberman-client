@@ -25,7 +25,12 @@ class EventHandler():
             self.key_set = ["up", "down", "right", "left", "b"]
         elif id == 2:
             self.key_set = ["w", "s", "a", "d", "q"]
-            self.key_dict = {"w": "up", "s": "down", "a": "left", "d": "right", "q": "b"}
+            self.key_dict = {
+                "w": "up",
+                "s": "down",
+                "a": "left",
+                "d": "right",
+                "q": "b"}
 
     def stop_event_handler(self):
         self.communication_queue.put("end")

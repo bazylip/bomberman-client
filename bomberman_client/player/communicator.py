@@ -37,13 +37,15 @@ class Communicator(Thread):
         self.sending_queue.put("end client")
 
     def get_message_from_server(self):
-        received_message = self.listening_queue.get() if not self.listening_queue.empty() else None
+        received_message = self.listening_queue.get(
+        ) if not self.listening_queue.empty() else None
         if received_message is not None:
             self.player_listening_queue.put(received_message)
         return received_message
 
     def send_message_to_server(self):
-        sent_message = self.player_sending_queue.get() if not self.player_sending_queue.empty() else None
+        sent_message = self.player_sending_queue.get(
+        ) if not self.player_sending_queue.empty() else None
         if sent_message is not None:
             self.sending_queue.put(sent_message)
 
@@ -65,7 +67,8 @@ class Communicator(Thread):
             return s
 
         sending_socket = create_sending_socket(self.address)
-        listening_socket, addr = create_listening_socket(socket.gethostbyname(socket.gethostname()))
+        listening_socket, addr = create_listening_socket(
+            socket.gethostbyname(socket.gethostname()))
 
         return sending_socket, listening_socket, addr
 

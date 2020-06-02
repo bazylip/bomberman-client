@@ -2,13 +2,15 @@ import json
 from queue import Queue
 from bomberman_client.player.communicator import Communicator
 
+
 class Player:
     def __init__(self, port=15000):
         self.sending_queue = Queue()
         self.listening_queue = Queue()
-        self.communicator = Communicator(player_sending_queue=self.sending_queue,
-                                         player_listening_queue=self.listening_queue,
-                                         port=port)
+        self.communicator = Communicator(
+            player_sending_queue=self.sending_queue,
+            player_listening_queue=self.listening_queue,
+            port=port)
         self.communicator.start()
         self.hp = None
         self.location = self.Coordinates(None, None)
@@ -52,6 +54,7 @@ class Player:
         def __init__(self, x, y):
             self.x = x
             self.y = y
+
 
 if __name__ == "__main__":
     player = Player()

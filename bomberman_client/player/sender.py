@@ -3,6 +3,7 @@ from threading import Thread
 
 MSGLEN = 500
 
+
 class Sender(Thread):
     def __init__(self, queue, socket):
         super().__init__()
