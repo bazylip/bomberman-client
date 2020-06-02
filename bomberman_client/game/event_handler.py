@@ -14,12 +14,10 @@ class EventHandler():
         action = None
         if not self.key_queue.empty():
             action = self.key_queue.get()
-            #print(f"Get action: {action}")
             if action not in self.key_set:
                 action = None
             if action in ["w", "s", "a", "d", "q"]:
                 action = self.key_dict.get(action)
-        #print(f"Return action: {action}")
         return action
 
     def set_keys(self, id):

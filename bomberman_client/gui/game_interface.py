@@ -1,6 +1,4 @@
 import json
-from os import environ
-environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame
 
 
@@ -23,7 +21,7 @@ class GameInterface:
         self.player_image1 = pygame.transform.scale(self.player_image1, (50, 50))
         self.player_image2 = pygame.image.load("gui/images/player2.png").convert_alpha()
         self.player_image2 = pygame.transform.scale(self.player_image2, (50, 50))
-        self.bomb_image = pygame.image.load("gui/images/bomb2.png").convert_alpha()
+        self.bomb_image = pygame.image.load("gui/images/bomb.png").convert_alpha()
         self.bomb_image = pygame.transform.scale(self.bomb_image, (60, 60))
         pygame.display.set_caption("Bomberman")
 
