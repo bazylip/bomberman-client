@@ -1,7 +1,7 @@
 from threading import Thread
 
-MSGLEN = 500
 
+MSGLEN = 500
 
 class Listener(Thread):
     def __init__(self, queue, socket):

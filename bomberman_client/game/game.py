@@ -1,5 +1,4 @@
 import time
-
 import pygame
 
 from bomberman_client.game.game_mechanics import GameMechanics
@@ -29,18 +28,18 @@ class Game(GameMechanics, GameInterface):
                     self.stop_event_handler()
                     break
                 if self.check_win_or_lose(info):
-                    self.render_end_screen()
-                    break
+                    self.render_end_screen(id_player_won=info[-1])
+                    while True:
+                        pass
                 self.player.update_player_info(info)
             self.render(info, self.player.id)
             action = self.get_user_action()
-            #print(f"Action: {action}")
             if action is not None:
                 self.player.send_action_to_server(action)
             time.sleep(0.01)
 
     def check_win_or_lose(self, info):
-        return False
+        return "game over" in info
 
     def server_disconnected(self, info):
         if info == "end client":

@@ -1,5 +1,4 @@
 import json
-import time
 from queue import Queue
 from bomberman_client.player.communicator import Communicator
 
